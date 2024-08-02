@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  a,
+  button,
+  img,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply transition-all duration-300;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply max-w-60 w-full flex justify-center items-center bg-primary hover:bg-primary-hover rounded-md h-[50px] text-white text-lg leading-[21.13px] font-medium hover:shadow-button;
+  }
+}
