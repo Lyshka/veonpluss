@@ -27,10 +27,31 @@
   input {
     @apply bg-white outline-none ring-0 rounded-md h-[50px] w-full text-dark-2d px-3 lining-nums;
   }
+
+  address {
+    @apply not-italic;
+  }
 }
 
 @layer components {
   .btn-primary {
     @apply max-w-60 w-full flex justify-center items-center bg-primary hover:bg-primary-hover rounded-md h-[50px] text-white text-lg leading-[21.13px] font-medium hover:shadow-button;
+  }
+
+  #contact .list-info-site {
+    @apply space-y-5;
+  }
+
+  #contact .list-info-site li,
+  #contact .list-info-site li a {
+    @apply flex items-center gap-2.5 font-light text-2xl leading-[28.18px] text-dark-36;
+  }
+
+  #contact .list-info-site li svg {
+    @apply w-[30px] h-[30px];
+  }
+
+  #contact .list-info-site li a:hover span {
+    @apply text-primary-hover;
   }
 }

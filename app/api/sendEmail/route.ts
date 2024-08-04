@@ -4,18 +4,18 @@ import nodemailer from "nodemailer";
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: 465,
-      secure: true,
+      host: "smtp.agrostroyservis.com",
+      port: 25,
+      secure: false,
       auth: {
-        user: process.env.SENDER_EMAIL,
-        pass: process.env.SENDER_PASSWORD,
+        user: "info@agrostroyservis.com",
+        pass: "lS9wU2iE9g",
       },
     });
 
     const mailOptions = {
-      from: process.env.SENDER_EMAIL,
-      to: process.env.RECEIVER_EMAIL,
+      from: "info@agrostroyservis.com",
+      to: "lesha_novitskiy@mail.ru",
       subject: "Sending",
       text: `TEST`,
     };

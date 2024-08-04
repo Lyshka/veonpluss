@@ -4,6 +4,8 @@ import {
   Services,
   Container,
   FormBlock,
+  Edges,
+  Contact,
 } from "@/src/components";
 
 export default function Home() {
@@ -14,6 +16,8 @@ export default function Home() {
         <About />
         <Services />
         <FormBlock />
+        <Edges />
+        <Contact />
       </Container>
     </>
   );

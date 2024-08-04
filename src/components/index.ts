@@ -8,3 +8,6 @@ export { Footer } from "./Footer";
 export { FormBlock } from "./FormBlock";
 export { Tel } from "./Tel";
 export { Form } from "./Form";
+export { Edges } from "./Edges";
+export { Contact } from "./Contact";
+export { Social } from "./Social";

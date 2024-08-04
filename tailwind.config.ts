@@ -38,6 +38,7 @@ const config = {
       button: "0px 0px 10px 0px #0940CB",
       main: "0px 0px 4px 0px #00000040",
       social: "0px 0px 3px 0px #0940CB",
+      
     },
     borderWidth: {
       5: "5px",

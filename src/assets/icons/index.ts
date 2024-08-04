@@ -4,3 +4,6 @@ export { ArrowLeftSlider } from "@/src/assets/icons/arrowLeftSlider";
 export { Telegram } from "@/src/assets/icons/telegram";
 export { Whatsup } from "@/src/assets/icons/whatsup";
 export { Viber } from "@/src/assets/icons/viber";
+export { Clock } from "@/src/assets/icons/clock";
+export { Mail } from "@/src/assets/icons/mail";
+export { Address } from "@/src/assets/icons/address";

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { cn } from "../lib/utils";
-import { Form, Tel } from ".";
+import { Form, Social, Tel } from ".";
 import { socials } from "../constants/social";
 import Link from "next/link";
 
@@ -35,18 +35,7 @@ export const FormBlock: FC<Props> = ({ className }) => {
             <Tel className="font-semibold text-xl leading-[23.48px] text-primary hover:text-primary-hover lining-nums" />
           </p>
 
-          <ul className="flex gap-4 items-center">
-            {socials.map(({ icon, id, link }) => (
-              <li key={id}>
-                <Link
-                  className="bg-primary w-10 h-10 rounded-full hover:shadow-social hover:bg-primary-hover flex justify-center items-center"
-                  href={link}
-                >
-                  {icon({})}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <Social />
         </div>
       </div>
 
