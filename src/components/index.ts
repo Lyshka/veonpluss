@@ -4,3 +4,7 @@ export { Menu } from "./Header/menu";
 export { UpBlock } from "./UpBlock";
 export { About } from "./about";
 export { Services } from "./Services";
+export { Footer } from "./Footer";
+export { FormBlock } from "./FormBlock";
+export { Tel } from "./Tel";
+export { Form } from "./Form";

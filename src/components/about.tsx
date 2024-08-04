@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { cn } from "../lib/utils";
-import { Container } from ".";
 import { PlusMinus } from "../assets/icons";
 import Image from "next/image";
 import { about } from "../assets/images";
@@ -12,7 +11,7 @@ interface Props {
 
 export const About: FC<Props> = ({ className }) => {
   return (
-    <Container className={cn("space-y-[60px]", className)}>
+    <section className={cn("space-y-[60px]", className)}>
       <div className="flex gap-[200px]">
         <h3 className="font-semibold text-[46px] leading-[54px] text-dark-2d">
           О компании
@@ -75,6 +74,6 @@ export const About: FC<Props> = ({ className }) => {
           />
         </div>
       </div>
-    </Container>
+    </section>
   );
 };

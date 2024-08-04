@@ -1,9 +1,9 @@
 import { FC } from "react";
 import Link from "next/link";
 
-import { Container, Menu } from "..";
+import { Container, Menu, Tel } from "..";
 import { cn } from "../../lib/utils";
-import { OutlinePHoneTElephone } from "@/src/assets/icons";
+import { siteInfo } from "@/src/constants/site";
 
 interface Props {
   className?: string;
@@ -23,20 +23,14 @@ export const Header: FC<Props> = ({ className }) => {
             className="font-semibold text-[30px] leading-[35.22px] text-primary hover:text-primary-hover"
             href={"/"}
           >
-            ООО “Веон плюс”
+            {siteInfo.nameSite}
           </Link>
 
           <Menu />
         </div>
 
         <div className="flex flex-col items-end gap-2.5">
-          <Link
-            href={"tel:+375293338159"}
-            className="flex items-center gap-[5px] font-medium text-xl leading-[23.48px] text-dark-36 hover:text-primary-hover lining-nums"
-          >
-            {/* <OutlinePHoneTElephone /> */}
-            +375 (29) 333-81-59
-          </Link>
+          <Tel className="flex items-center gap-[5px] font-medium text-xl leading-[23.48px] text-dark-36 hover:text-primary-hover lining-nums" />
 
           <Link
             className="text-base font-medium leading-[18.78px] text-primary hover:text-primary-hover"

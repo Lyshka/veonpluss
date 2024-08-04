@@ -15,8 +15,17 @@
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  path {
     @apply transition-all duration-300;
+  }
+
+  button:disabled {
+    @apply opacity-50;
+  }
+
+  input {
+    @apply bg-white outline-none ring-0 rounded-md h-[50px] w-full text-dark-2d px-3 lining-nums;
   }
 }
 

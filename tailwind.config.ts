@@ -37,17 +37,23 @@ const config = {
       header: "0px 4px 20px 0px #0000000D",
       button: "0px 0px 10px 0px #0940CB",
       main: "0px 0px 4px 0px #00000040",
+      social: "0px 0px 3px 0px #0940CB",
+    },
+    borderWidth: {
+      5: "5px",
     },
     colors: {
       white: { DEFAULT: "#ffffff" },
       primary: {
         DEFAULT: "#1A54EA",
         hover: "#0940CB",
+        dark: "#151F51",
       },
       gray: {
         ea: "#EAEAEA",
         49: "#494949",
         f1: "#F1F5F8",
+        66: "#666666",
       },
       dark: {
         36: "#363636",
