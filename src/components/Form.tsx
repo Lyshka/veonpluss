@@ -3,6 +3,7 @@
 import { ChangeEvent, FC, FormEvent, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { IMaskInput } from "react-imask";
+import emailjs from "@emailjs/browser";
 
 import { cn } from "../lib/utils";
 
@@ -14,10 +15,16 @@ interface Props {
 }
 
 export const Form: FC<Props> = ({ className }) => {
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef<any>();
   const { setIsOpen, isOpen } = useMobileMenu();
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const EMAIL_YOUR_SERVICE_ID = process.env
+    .NEXT_PUBLIC_EMAIL_YOUR_SERVICE_ID as string;
+  const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string;
+  const EMAIL_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string;
 
   const handleNameInput = (event: ChangeEvent<HTMLInputElement>) => {
     const nameValue = event.target.value;
@@ -44,9 +51,24 @@ export const Form: FC<Props> = ({ className }) => {
       return;
     }
 
-    setIsOpen();
-    console.log(isOpen);
-    formRef.current?.reset();
+    setIsSubmit(true);
+
+    emailjs
+      .sendForm(EMAIL_YOUR_SERVICE_ID, EMAIL_TEMPLATE_ID, formRef?.current, {
+        publicKey: EMAIL_PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          setIsOpen();
+          formRef.current?.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      )
+      .finally(() => {
+        setIsSubmit(false);
+      });
   };
 
   return (
@@ -66,7 +88,7 @@ export const Form: FC<Props> = ({ className }) => {
         <label className="flex flex-col xl:gap-4 gap-2.5">
           <span>Ваше имя</span>
 
-          <input onChange={handleNameInput} type="text" />
+          <input name="name" onChange={handleNameInput} type="text" />
         </label>
 
         <div className="xl:space-y-3.5 space-y-3.5">
@@ -74,6 +96,7 @@ export const Form: FC<Props> = ({ className }) => {
             <span>Номер телефона</span>
 
             <IMaskInput
+              name="tel"
               onChange={handleTelInput}
               type="tel"
               mask="+375 (00) 000-00-00"
@@ -86,7 +109,7 @@ export const Form: FC<Props> = ({ className }) => {
           </p>
         </div>
 
-        <button type="submit" className="btn-primary">
+        <button disabled={isSubmit} type="submit" className="btn-primary">
           Отправить
         </button>
       </form>
