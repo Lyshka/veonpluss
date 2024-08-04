@@ -1,3 +1,4 @@
+import { cn } from "@/src/lib/utils";
 import { FC } from "react";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 export const PlusMinus: FC<Props> = ({ className }) => {
   return (
     <svg
-      className={className}
+      className={cn("xl:w-5 w-3.5 xl:h-10 h-7", className)}
       width="20"
       height="39"
       viewBox="0 0 20 39"

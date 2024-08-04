@@ -16,7 +16,8 @@
   h4,
   h5,
   h6,
-  path {
+  path,
+  svg {
     @apply transition-all duration-300;
   }
 
@@ -35,23 +36,55 @@
 
 @layer components {
   .btn-primary {
-    @apply max-w-60 w-full flex justify-center items-center bg-primary hover:bg-primary-hover rounded-md h-[50px] text-white text-lg leading-[21.13px] font-medium hover:shadow-button;
+    @apply xl:max-w-60 max-w-52 w-full flex justify-center items-center bg-primary hover:bg-primary-hover rounded-md xl:h-[50px] h-10 text-white xl:text-lg text-base xl:leading-[21.13px] leading-[18.78px] font-medium hover:shadow-button;
   }
 
   #contact .list-info-site {
-    @apply space-y-5;
+    @apply xl:space-y-5 space-y-2.5;
   }
 
   #contact .list-info-site li,
   #contact .list-info-site li a {
-    @apply flex items-center gap-2.5 font-light text-2xl leading-[28.18px] text-dark-36;
+    @apply flex items-center gap-2.5 font-light xl:text-2xl text-lg xl:leading-[28.18px] leading-[21.13px] text-dark-36;
   }
 
   #contact .list-info-site li svg {
-    @apply w-[30px] h-[30px];
+    @apply xl:w-[30px] w-6 xl:h-[30px] h-6;
   }
 
   #contact .list-info-site li a:hover span {
     @apply text-primary-hover;
+  }
+
+  header #handleMobileMenu.open .close-icon {
+    @apply opacity-100;
+  }
+
+  header #handleMobileMenu.open .burger-icon {
+    @apply opacity-0;
+  }
+
+  header #handleMobileMenu .close-icon {
+    @apply opacity-0;
+  }
+
+  #thankModal.open {
+    @apply flex;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    0% {
+      @apply opacity-0;
+    }
+
+    100% {
+      @apply opacity-100;
+    }
+  }
+
+  .animHidden {
+    animation: fadeIn 0.5s ease-out;
   }
 }

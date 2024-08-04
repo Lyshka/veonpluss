@@ -1,18 +1,21 @@
 "use client";
 
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { IMaskInput } from "react-imask";
 
 import { cn } from "../lib/utils";
 
 import "react-toastify/dist/ReactToastify.css";
+import { useMobileMenu } from "../store/useMobileMenu";
 
 interface Props {
   className?: string;
 }
 
 export const Form: FC<Props> = ({ className }) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const { setIsOpen, isOpen } = useMobileMenu();
   const [name, setName] = useState("");
   const [tel, setTel] = useState("");
 
@@ -40,6 +43,10 @@ export const Form: FC<Props> = ({ className }) => {
       toast.warning("Не правильный формат телефона!");
       return;
     }
+
+    setIsOpen();
+    console.log(isOpen);
+    formRef.current?.reset();
   };
 
   return (
@@ -49,30 +56,31 @@ export const Form: FC<Props> = ({ className }) => {
       </div>
 
       <form
+        ref={formRef}
         onSubmit={handleFormSubmit}
         className={cn(
-          "max-w-[360px] w-full flex-shrink-0 space-y-[30px]",
+          "xl:max-w-[360px] w-full flex-shrink-0 xl:space-y-[30px] space-y-5",
           className
         )}
       >
-        <label className="flex flex-col gap-4">
+        <label className="flex flex-col xl:gap-4 gap-2.5">
           <span>Ваше имя</span>
 
           <input onChange={handleNameInput} type="text" />
         </label>
 
-        <div className="space-y-3.5">
-          <label className="flex flex-col gap-4">
+        <div className="xl:space-y-3.5 space-y-3.5">
+          <label className="flex flex-col xl:gap-4 gap-2.5">
             <span>Номер телефона</span>
 
             <IMaskInput
               onChange={handleTelInput}
-              type="text"
+              type="tel"
               mask="+375 (00) 000-00-00"
             />
           </label>
 
-          <p className="max-w-[312px] w-full text-sm leading-[16.44px] text-gray-66">
+          <p className="xl:max-w-[312px] w-full text-sm leading-[16.44px] text-gray-66">
             Нажимая «Отправить», Вы соглашаетесь с Политикой обработки
             персональных данных
           </p>

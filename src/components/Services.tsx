@@ -25,13 +25,16 @@ export const Services: FC<Props> = ({ className }) => {
   };
 
   return (
-    <section id="services" className={cn("space-y-10", className)}>
-      <div className="flex items-center justify-between">
-        <h3 className="text-[46px] leading-[54px] font-semibold text-dark-2d">
+    <section
+      id="servives"
+      className={cn("xl:space-y-10 space-y-[30px] scroll-mt-20", className)}
+    >
+      <div className="flex xl:items-center xl:justify-between">
+        <h3 className="xl:text-[46px] text-2xl xl:leading-[54px] leading-[28.18px] font-semibold text-dark-2d">
           Наши услуги
         </h3>
 
-        <div className="flex items-center gap-4">
+        <div className="xl:flex hidden items-center gap-4">
           <button
             onClick={handlePrevSlider}
             className="w-[42px] h-[42px] bg-gray-f1 rounded-full flex justify-center items-center group hover:bg-primary prev-btn"
@@ -49,17 +52,29 @@ export const Services: FC<Props> = ({ className }) => {
       </div>
 
       <Swiper
-        navigation={{
-          prevEl: "#services .prev-btn",
-          nextEl: "#services .next-btn",
-        }}
         modules={[Navigation]}
-        spaceBetween={24}
-        width={400}
+        breakpoints={{
+          1368: {
+            spaceBetween: 24,
+            width: 400,
+            navigation: {
+              prevEl: "#services .prev-btn",
+              nextEl: "#services .next-btn",
+            },
+          },
+          0: {
+            spaceBetween: 10,
+            slidesPerView: 1,
+            navigation: {
+              prevEl: "#services .prev-btn-mobile",
+              nextEl: "#services .next-btn-mobile",
+            },
+          },
+        }}
       >
         {services.map(({ id, imgUrl, title }) => (
-          <SwiperSlide key={id} className="group space-y-5 select-none">
-            <div className="h-[228px] overflow-hidden rounded-md border-b border-b-5 border-primary">
+          <SwiperSlide key={id} className="group xl:space-y-5 space-y-2.5 select-none">
+            <div className="xl:h-[228px] h-[170px] overflow-hidden rounded-md border-b border-b-5 border-primary">
               <Image
                 width={400}
                 height={228}
@@ -69,12 +84,28 @@ export const Services: FC<Props> = ({ className }) => {
               />
             </div>
 
-            <h2 className="font-semibold text-2xl leading-[28.18px] text-dark-2d group-hover:text-primary-hover">
+            <h2 className="font-semibold xl:text-2xl text-lg xl:leading-[28.18px] leading-[21.13px] text-dark-2d group-hover:text-primary-hover">
               {title}
             </h2>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <div className="xl:hidden flex mx-auto w-fit items-center gap-4">
+        <button
+          onClick={handlePrevSlider}
+          className="w-[42px] h-[42px] bg-gray-f1 rounded-full flex justify-center items-center group hover:bg-primary prev-btn-mobile"
+        >
+          <ArrowLeftSlider className="rotate-180" />
+        </button>
+
+        <button
+          onClick={handleNextSlider}
+          className="w-[42px] h-[42px] bg-gray-f1 rounded-full flex justify-center items-center group hover:bg-primary next-btn-mobile"
+        >
+          <ArrowLeftSlider />
+        </button>
+      </div>
     </section>
   );
 };

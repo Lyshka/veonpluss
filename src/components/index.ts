@@ -11,3 +11,5 @@ export { Form } from "./Form";
 export { Edges } from "./Edges";
 export { Contact } from "./Contact";
 export { Social } from "./Social";
+export { MobileMenu } from "./Header/mobileMenu";
+export { Thank } from "./Modal/thank";

@@ -11,38 +11,38 @@ interface Props {
 
 export const About: FC<Props> = ({ className }) => {
   return (
-    <section className={cn("space-y-[60px]", className)}>
-      <div className="flex gap-[200px]">
-        <h3 className="font-semibold text-[46px] leading-[54px] text-dark-2d">
+    <section id="about" className={cn("xl:space-y-[60px] space-y-5 scroll-mt-20", className)}>
+      <div className="flex xl:flex-row flex-col xl:gap-[200px] gap-[30px]">
+        <h3 className="font-semibold xl:text-[46px] text-2xl xl:leading-[54px] leading-[28.18px] text-dark-2d">
           О компании
         </h3>
 
-        <div className="space-y-5 max-w-[696px] w-full">
-          <p className="font-medium text-2xl text-gray-49 leading-[28.18px]">
+        <div className="space-y-5 xl:max-w-[696px] w-full">
+          <p className="font-medium xl:text-2xl text-base text-gray-49 xl:leading-[28.18px] leading-[18.78px]">
             ООО “Веон плюс” учитывает все пожелания клиентов и старается сделать
             сотрудничество максимально удобным
           </p>
 
-          <ul className="flex gap-[114px]">
-            <li className="flex flex-col gap-2.5 max-w-[234px] w-full group">
-              <strong className="font-extrabold text-[60px] leading-[70.44px] text-primary hover:text-primary-hover transition-all duration-300">
+          <ul className="flex xl:flex-row flex-col xl:gap-[114px] gap-5 xl:items-start items-center">
+            <li className="flex flex-col gap-2.5 xl:items-start items-center xl:max-w-[234px] max-w-[205px] w-full group">
+              <strong className="font-extrabold xl:text-[60px] text-[50px] xl:leading-[70.44px] leading-[58.7px] text-primary hover:text-primary-hover transition-all lining-nums duration-300">
                 3000
               </strong>
 
-              <p className="font-medium text-base leading-[18.78px] text-gray-49 lining-nums">
+              <p className="font-medium xl:text-base text-sm xl:leading-[18.78px] leading-[16.44px] text-gray-49 lining-nums xl:text-left text-center">
                 м2 площадей для размещения Ваших товаров
               </p>
             </li>
 
-            <li className="flex flex-col gap-2.5 max-w-[180px] w-full group">
-              <strong className="font-extrabold text-[60px] leading-[70.44px] text-primary hover:text-primary-hover transition-all duration-300 flex gap-2.5 items-center line lining-nums">
+            <li className="flex flex-col gap-2.5 xl:items-start items-center xl:max-w-[180px] max-w-[158px] w-full group">
+              <strong className="font-extrabold xl:text-[60px] text-[50px] xl:leading-[70.44px] leading-[58.7px] text-primary hover:text-primary-hover transition-all duration-300 flex items-center gap-2.5 lining-nums">
                 <PlusMinus />
                 <span>
                   25<span className="text-[30px] leading-[35.22px]">℃</span>
                 </span>
               </strong>
 
-              <p className="font-medium text-base leading-[18.78px] text-gray-49 lining-nums">
+              <p className="font-medium xl:text-base text-sm xl:leading-[18.78px] leading-[16.44px] text-gray-49 lining-nums xl:text-left text-center">
                 температурный режим хранения товара
               </p>
             </li>
@@ -50,21 +50,23 @@ export const About: FC<Props> = ({ className }) => {
         </div>
       </div>
 
-      <div className="flex gap-9">
-        <ul className="space-y-[22px]">
+      <div className="xl:flex xl:gap-9">
+        <ul className="space-y-5">
           {aboutList.map(({ desc, id, title }) => (
             <li
-              className="group shadow-main bg-gray-f1 rounded-md py-5 pr-10 pl-[30px] space-y-2.5"
+              className="group shadow-main bg-gray-f1 rounded-md py-5 xl:pr-10 pr-2.5 xl:pl-[30px] pl-2.5 space-y-2.5"
               key={id}
             >
-              <h5 className="font-semibold text-lg leading-[21.13px] text-primary group-hover:text-primary-hover">{title}</h5>
+              <h5 className="font-semibold text-lg leading-[21.13px] text-primary group-hover:text-primary-hover">
+                {title}
+              </h5>
 
-              <p className="text-base leading-[18.78px] text-gray-49">{desc}</p>
+              <p className="xl:text-base text-sm xl:leading-[18.78px] leading-[16.44px] text-gray-49">{desc}</p>
             </li>
           ))}
         </ul>
 
-        <div className="group max-w-[672px] h-[598px] w-full overflow-hidden rounded-md flex-shrink-0">
+        <div className="group max-w-[672px] h-[598px] w-full overflow-hidden rounded-md flex-shrink-0 xl:block hidden">
           <Image
             src={about}
             alt="Помещение"

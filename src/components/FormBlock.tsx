@@ -1,8 +1,6 @@
 import { FC } from "react";
 import { cn } from "../lib/utils";
 import { Form, Social, Tel } from ".";
-import { socials } from "../constants/social";
-import Link from "next/link";
 
 interface Props {
   className?: string;
@@ -11,23 +9,24 @@ interface Props {
 export const FormBlock: FC<Props> = ({ className }) => {
   return (
     <section
+      id="order"
       className={cn(
-        "shadow-main bg-gray-f1 rounded-md py-10 px-[60px] flex gap-[321px]",
+        "shadow-main scroll-mt-20 bg-gray-f1 rounded-md xl:py-10 py-[30px] xl:px-[60px] px-2.5 flex xl:flex-row flex-col xl:gap-[321px] gap-5",
         className
       )}
     >
-      <div className="space-y-[30px]">
-        <h5 className="font-semibold text-[46px] leading-[54px] text-dark-2d">
+      <div className="xl:space-y-[30px] space-y-5">
+        <h5 className="font-semibold xl:text-[46px] text-2xl xl:leading-[54px] leading-[28.18px] text-dark-2d">
           Нужна помощь
           <br />в хранении товара?
         </h5>
 
-        <p className="text-2xl leading-[28.18px] font-medium text-gray-49">
+        <p className="xl:text-2xl text-lg xl:leading-[28.18px] leading-[21.13px] font-medium text-gray-49">
           Оставьте Ваши контакты и мы свяжемся
           <br /> с Вами в течении рабочего дня
         </p>
 
-        <div className="space-y-5 font-medium text-lg leading-[21.13px] text-gray-49">
+        <div className="space-y-5 xl:block hidden font-medium text-lg leading-[21.13px] text-gray-49">
           <p>Не хотите ждать?</p>
 
           <p className="flex items-center gap-2.5">
@@ -40,6 +39,17 @@ export const FormBlock: FC<Props> = ({ className }) => {
       </div>
 
       <Form />
+
+      <div className="space-y-5 xl:hidden block font-medium text-lg leading-[21.13px] text-gray-49">
+        <p>Не хотите ждать?</p>
+
+        <p className="flex xl:flex-row flex-col xl:items-center xl:gap-2.5 gap-1.5">
+          Звоните по номеру:{" "}
+          <Tel className="font-semibold text-xl leading-[23.48px] text-primary hover:text-primary-hover lining-nums" />
+        </p>
+
+        <Social />
+      </div>
     </section>
   );
 };

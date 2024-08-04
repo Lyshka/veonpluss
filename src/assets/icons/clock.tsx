@@ -15,7 +15,7 @@ export const Clock: FC<Props> = ({ className }) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width="30" height="30" fill="#F5F5F5" />
-      <g clip-path="url(#clip0_0_1)">
+      <g clipPath="url(#clip0_0_1)">
         <rect
           width="1920"
           height="4727"

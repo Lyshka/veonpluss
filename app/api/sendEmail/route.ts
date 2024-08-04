@@ -1,37 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { NextApiRequest } from "next";
+import { Resend } from "resend";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+const resend = new Resend(process.env.RESEND_API_KEY);
+const email = process.env.EMAIL as string;
+
+export async function POST(req: NextApiRequest) {
+  const { message }: { message: string } = req.body;
+
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.agrostroyservis.com",
-      port: 25,
-      secure: false,
-      auth: {
-        user: "info@agrostroyservis.com",
-        pass: "lS9wU2iE9g",
-      },
+    const { data, error } = await resend.emails.send({
+      from: email,
+      to: [email],
+      subject: "Заявка с сайта",
+      html: message || "Ошибка",
     });
 
-    const mailOptions = {
-      from: "info@agrostroyservis.com",
-      to: "lesha_novitskiy@mail.ru",
-      subject: "Sending",
-      text: `TEST`,
-    };
+    if (error) {
+      return Response.json({ error }, { status: 500 });
+    }
 
-    const info = await transporter.sendMail(mailOptions);
-    console.log(info.response);
-    return NextResponse.json({ success: true, message: "success" });
+    return Response.json(data);
   } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "error",
-      },
-      { status: 500 }
-    );
+    return Response.json({ error }, { status: 500 });
   }
 }
